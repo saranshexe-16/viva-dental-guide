@@ -29,6 +29,15 @@ git clone <YOUR_GIT_URL>
 # Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
+
+#Backend (Node.js + Express)
+
+Step 1: Install dotenv
+If you haven't installed dotenv yet, do it by running:
+
+~~~
+npm install dotenv axios express cors
+~~~
 # Step 3: Install the necessary dependencies.
 npm i
 
