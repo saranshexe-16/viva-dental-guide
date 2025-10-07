@@ -1,3 +1,6 @@
+// Load environment variables from .env file
+require('dotenv').config(); // This loads variables into process.env
+
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -9,8 +12,8 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-// API key (replace with your actual API key)
-const API_KEY = 'your-api-key-here';  // Store your API key securely, consider using environment variables
+// Access the API key from environment variables (loaded from .env)
+const API_KEY = process.env.API_KEY;  // Fetch API key securely from the .env file
 
 // API URL for your external service (replace with the actual API URL)
 const API_URL = 'https://api.example.com/data';
@@ -28,7 +31,7 @@ const fetchApiData = async () => {
         return response.data;
     } catch (error) {
         console.error('Error fetching API data:', error);
-        return {};
+        return {}; // Return empty object in case of an error
     }
 };
 
@@ -36,7 +39,7 @@ const fetchApiData = async () => {
 app.get('/fetch-data', async (req, res) => {
     const apiData = await fetchApiData();
     const result = { apiData };
-    res.json(result);
+    res.json(result);  // Send the API data to the frontend
 });
 
 app.listen(port, () => {
